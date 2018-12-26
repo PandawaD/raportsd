@@ -6,7 +6,7 @@
       echo "<script>window.location.href='?halaman=deskripsi'</script>";
     }else{
       echo "<script>alert('gagal')</script>";
-    } 
+    }
   }
 
   if(isset($_POST['simpan'])){
@@ -25,7 +25,7 @@
     if($query_tambah == TRUE){
      echo "<script>window.location.href='?halaman=deskripsi'</script>";
     } else{
-      echo "gagal";
+      echo "<script>alert('gagal')</script>";
     }
   } 
 
@@ -44,7 +44,7 @@
     if($query_edit==TRUE){
       echo "<script>window.location.href='?halaman=deskripsi'</script>";
     }else{
-      echo "gagal";
+      echo "<script>alert('gagal')</script>";
     }
     }
 ?>

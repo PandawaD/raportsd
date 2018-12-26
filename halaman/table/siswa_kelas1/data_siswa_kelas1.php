@@ -5,7 +5,7 @@
     if ($query_delete == TRUE) {
       echo "<script>window.location.href='?halaman=data_siswa_kelas1'</script>";
     }else{
-      echo "gagal";
+      echo "<script>alert('gagal')</script>";
     }
   }
 
@@ -16,7 +16,7 @@
    if ($query_detadd == TRUE) {
       echo "<script>window.location.href='?halaman=data_siswa_kelas1'</script>";
     }else{
-      echo "gagal";
+      echo "<script>alert('gagal')</script>";
     }
   }
 
@@ -40,7 +40,7 @@
     if($query_edit==TRUE){
       echo "<script>window.location.href='?halaman=data_siswa_kelas1'</script>";
     }else{
-      echo "gagal";
+      echo "<script>alert('gagal')</script>";
     }
   }
 ?>

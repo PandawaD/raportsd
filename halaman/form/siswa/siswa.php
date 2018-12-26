@@ -5,7 +5,7 @@
     if ($query_delete == TRUE) {
       echo "<script>window.location.href='?halaman=siswa'</script>";
     }else{
-      echo "gagal";
+      echo "<script>alert('gagal')</script>";
     }
   }
 
@@ -28,7 +28,7 @@
     if($query_tambah == TRUE){
      
     } else{
-      echo "gagal";
+      echo "<script>alert('gagal')</script>";
     }
   } 
 
@@ -52,7 +52,7 @@
     if($query_edit==TRUE){
       echo "<script>window.location.href='?halaman=siswa'</script>";
     }else{
-      echo "gagal";
+      echo "<script>alert('gagal')</script>";
     }
     }
 ?>
