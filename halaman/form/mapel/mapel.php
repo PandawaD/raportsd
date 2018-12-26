@@ -5,7 +5,7 @@
     if ($query_delete == TRUE) {
       echo "<script>window.location.href='?halaman=mapel'</script>";
     }else{
-      echo "<script>alert('gagal')</script>";
+      echo "gagal";
     }
   }
 
@@ -17,7 +17,7 @@
     if($query_tambah == TRUE){
      echo "<script>window.location.href='?halaman=mapel'</script>";
     } else{
-      echo "<script>alert('gagal')</script>";
+      echo "gagal";
     }
   } 
 
@@ -30,7 +30,7 @@
     if($query_edit==TRUE){
       echo "<script>window.location.href='?halaman=mapel'</script>";
     }else{
-      echo "<script>alert('gagal')</script>";
+      echo "gagal";
     }
     }
 ?>

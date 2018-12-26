@@ -11,7 +11,7 @@
     if ($query_delete == TRUE) {
       echo "<script>window.location.href='?halaman=kopetensi'</script>";
     }else{
-      echo "<script>alert('gagal')</script>";
+      echo "gagal";
     } 
   }
 
@@ -28,7 +28,7 @@
     if($query_tambah == TRUE){
      echo "<script>window.location.href='?halaman=kopetensi'</script>";
     } else{
-      echo "<script>alert('gagal')</script>";
+      echo "gagal";
     }
   } 
 
@@ -44,7 +44,7 @@
     if($query_edit==TRUE){
       
     }else{
-      echo "<script>alert('gagal')</script>";
+      echo "gagal";
     }
     }
 ?>
