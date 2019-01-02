@@ -67,7 +67,6 @@
     </div> 
     <div class="col-md-10" id="edit">   
     </div>
-
     <div class="col-md-10">
       <div class="box box-primary">
             <div class="box-header">
@@ -97,8 +96,9 @@
                           <td><?php echo $no ?></td>
                           <td><?php echo $data['nama_kelas']; ?></td>
       				            <td>
-                            <button class="btn btn-warning click-edit" id="<?php echo $data['kode_kelas'] ?>"><li class="fa fa-pencil"></li></button>
-      					          
+                            <a class="btn btn-warning" href="?halaman=edit_data_kelas&id=<?php echo $data['kode_kelas'] ?>"><li class="fa fa-pencil"></li></a>
+                          </td>
+                          <td>
                             <a class="btn btn-danger " href="?halaman=kelas&delete=<?php echo $data['kode_kelas'] ?>" onclick="return confirm('Anda Yakin Ingin Menghapus Data?')"> <li class="fa fa-close"></li> </a>
                           </td>
                         </tr>

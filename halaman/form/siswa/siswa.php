@@ -13,13 +13,13 @@
     $nis = $_POST['nis'];
     $nisn = $_POST['nisn'];
     $kelas = $_POST['kelas'];
-	$nama_siswa = $_POST['nama_siswa'];
+	  $nama_siswa = $_POST['nama_siswa'];
     $tempat_lahir = $_POST['tempat_lahir'];
     $tgl_lahir = $_POST['tgl_lahir'];
-	$jenkel = $_POST['jenkel'];
+	  $jenkel = $_POST['jenkel'];
     $agama = $_POST['agama'];
     $ayah = $_POST['ayah'];
-	$ibu = $_POST['ibu'];
+	  $ibu = $_POST['ibu'];
     $alamat = $_POST['alamat'];
     $foto = $_POST['foto'];
 

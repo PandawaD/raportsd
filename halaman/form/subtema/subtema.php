@@ -97,8 +97,9 @@
                           <td><?php echo $no ?></td>
                           <td><?php echo $data['subtema']; ?></td>
       				            <td>
-                            <button class="btn btn-warning click-edit" id="<?php echo $data['kode_subtema'] ?>"><li class="fa fa-pencil"></li></button>
-      					          
+                            <a class="btn btn-warning" href="?halaman=edit_data_subtema&id=<?php echo $data['kode_subtema'] ?>"><li class="fa fa-pencil"></li></a>
+                          </td>
+                          <td>
                             <a class="btn btn-danger " href="?halaman=subtema&delete=<?php echo $data['kode_subtema'] ?>" onclick="return confirm('Anda Yakin Ingin Menghapus Data?')"> <li class="fa fa-close"></li> </a>
                           </td>
                         </tr>

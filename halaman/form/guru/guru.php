@@ -177,8 +177,9 @@
                     <td><?php echo $data['status']; ?></td>
                     <td><?php echo $data['foto']; ?></td>
                     <td>
-                      <button class="btn btn-warning click-edit" id="<?php echo $data['nip'] ?>"><li class="fa fa-pencil"></li></button>
-
+                      <a class="btn btn-warning" href="?halaman=edit_data_guru&id=<?php echo $data['nip'] ?>"><li class="fa fa-pencil"></li></a>
+                    </td>
+                    <td>
                       <a class="btn btn-danger " href="?halaman=guru&delete=<?php echo $data['nip'] ?>" onclick="return confirm('Anda Yakin Ingin Menghapus Data?')"> <li class="fa fa-close"></li> </a>
                     </td>
                   </tr>

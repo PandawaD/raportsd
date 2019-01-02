@@ -1,9 +1,11 @@
   <?php
-  include '../../../config/koneksi.php';
-  $id = $_POST['id'];
+  $id = $_GET['id'];
   $query = mysqli_query($koneksi,"SELECT * FROM kelas WHERE kode_kelas = '$id'") or die(mysqli_error());
   foreach ($query as $data) {
   ?>
+  <section class="content">
+  <div class="data">
+  <div class="col-md-12" id="edit">
   <div class="box box-warning">
             <div class="box-header with-border">
               <h3 class="box-title">Edit Kelas</h3>
@@ -32,3 +34,6 @@
             </form>
             <?php } ?>
   </div>
+</div>
+</div>
+</section>

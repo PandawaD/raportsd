@@ -97,8 +97,8 @@
                           <td><?php echo $no ?></td>
                           <td><?php echo $data['nama_kategori']; ?></td>
       				            <td>
-                            <button class="btn btn-warning click-edit" id="<?php echo $data['kode_kategori'] ?>"><li class="fa fa-pencil"></li></button>
-      					          
+                            <a class="btn btn-warning" href="?halaman=edit_data_kategori&id=<?php echo $data['kode_kategori'] ?>"><li class="fa fa-pencil"></li></a>
+                          </td><td>
                             <a class="btn btn-danger " href="?halaman=kategori&delete=<?php echo $data['kode_kategori'] ?>" onclick="return confirm('Anda Yakin Ingin Menghapus Data?')"> <li class="fa fa-close"></li> </a>
                           </td>
                         </tr>

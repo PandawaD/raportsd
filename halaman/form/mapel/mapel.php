@@ -96,9 +96,10 @@
                         <tr>
                           <td><?php echo $no ?></td>
                           <td><?php echo $data['nama_mapel']; ?></td>
-      				            <td>
-                            <button class="btn btn-warning click-edit" id="<?php echo $data['kode_mapel'] ?>"><li class="fa fa-pencil"></li></button>
-      					          
+                          <td>
+                            <a class="btn btn-warning" href="?halaman=edit_data_mapel&id=<?php echo $data['kode_mapel'] ?>"><li class="fa fa-pencil"></li></a>
+                          </td>
+                          <td>
                             <a class="btn btn-danger " href="?halaman=mapel&delete=<?php echo $data['kode_mapel'] ?>" onclick="return confirm('Anda Yakin Ingin Menghapus Data?')"> <li class="fa fa-close"></li> </a>
                           </td>
                         </tr>
