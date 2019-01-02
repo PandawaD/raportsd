@@ -182,8 +182,9 @@
                     <td ><?php echo $data['nama_kategori'] ?></td> 
                     <td ><?php echo $data['subtema'] ?></td> 
                     <td>
-
-                      <button class="btn btn-warning click-edit" id="<?php echo $data['kd'] ?>"><li class="fa fa-pencil"></li></button>
+                      <a class="btn btn-warning" href="?halaman=edit_data_kd&id=<?php echo $data['kd'] ?>"><li class="fa fa-pencil"></li></a>
+                    </td>
+                    <td>
                       <a class="btn btn-danger " href="?halaman=kopetensi&delete=<?php echo $data['kd'] ?>" onclick="return confirm('Anda Yakin Ingin Menghapus Data?')"> <li class="fa fa-close"></li> </a>
                     </td>
                     

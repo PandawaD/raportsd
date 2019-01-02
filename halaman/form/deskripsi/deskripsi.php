@@ -172,10 +172,6 @@
                   <th>Kelas</th>
                   <th>Mata Pelajaran</th>
                   <th>KD</th>
-                  <th>Kategori 1</th>
-        				  <th>Kategori 2</th>
-        				  <th>Kategori 3</th>
-        				  <th>Kategori 4</th>
                   <th>Pilihan</th>
                 </tr>
                 </thead>
@@ -190,10 +186,6 @@
                     <td><?php echo $data['nama_kelas'] ?></td>    
                     <td ><?php echo $data['nama_mapel'] ?></td>
                     <td ><?php echo $data['nama_kategori'] ?></td>
-                    <td ><?php echo $data['kat1'] ?></td> 
-          					<td ><?php echo $data['kat2'] ?></td> 
-          					<td ><?php echo $data['kat3'] ?></td> 
-          					<td ><?php echo $data['kat4'] ?></td> 
                     <td>
 
                       <button class="btn btn-warning click-edit" id="<?php echo $data['idd'] ?>"><li class="fa fa-pencil"></li></button>
