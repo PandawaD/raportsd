@@ -33,7 +33,7 @@
     $password = $_POST['password'];
     $level_user= $_POST['level_user'];
      
-    $query_edit=mysqli_query($koneksi,"UPDATE login SET id_user='$id_user',nip='nip',username='$username', password='$password',level_user='$level_user'  WHERE id_user='$id'");
+    $query_edit=mysqli_query($koneksi,"UPDATE login SET id_user='$id_user',nip='$nip',username='$username', password='$password',level_user='$level_user'  WHERE id_user='$id'");
 
     if($query_edit==TRUE){
       echo "<script>window.location.href='?halaman=register'</script>";
@@ -91,8 +91,13 @@
                         
                       <select class="form-control" name="level_user">
                         <option value="admin">Admin</option>
-                        <option value="guru">Guru</option>
-                        <option value="pdw">Pdw</option>
+                        <option value="kepsek">KepSek</option>
+                        <option value="g1">Guru Kelas 1</option>
+                        <option value="g2">Guru Kelas 2</option>
+                        <option value="g3">Guru Kelas 3</option>
+                        <option value="g4">Guru Kelas 4</option>
+                        <option value="g5">Guru Kelas 5</option>
+                        <option value="g6">Guru Kelas 6</option>
                       </select>
                       </div>
                     </div>

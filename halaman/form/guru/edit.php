@@ -67,12 +67,7 @@
                   </div>
                 </div>
                 
-                <div class="form-group">
-                  <label  class="col-sm-2 control-label">Foto Profil</label>
-                  <div class="col-sm-8">
-                    <input type="file"  name="foto"  value="<?php echo $data['foto']?>">
-                  </div>
-                </div>
+                
 
               </div>
               <!-- /.box-body -->

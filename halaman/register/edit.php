@@ -1,7 +1,7 @@
   <?php
   include '../../config/koneksi.php';
   $id = $_POST['id'];
-  $query = mysqli_query($koneksi,"SELECT * FROM akun WHERE id_user = '$id'") or die(mysqli_error());
+  $query = mysqli_query($koneksi,"SELECT * FROM login WHERE id_user = '$id'") or die(mysqli_error());
   foreach ($query as $data) {
   ?>
   <div class="box box-warning">
@@ -31,7 +31,7 @@
                     $querykat = mysqli_query($koneksi,"SELECT * FROM guru") or die(mysqli_error());
                     foreach ($querykat as $kat ) {  
                     ?>
-                    <option value="<?php echo $data['nip'] ?>"
+                    <option value="<?php echo $kat['nip'] ?>"
                       
                       <?php if($kat['nip']==$data['nip']){ 
                         echo "Selected";
@@ -62,12 +62,27 @@
                     <option value="admin" <?php if ($data['level_user']=='admin') {
                        echo "Selected";
                     }?>>Admin</option>
-                    <option value="guru" <?php if($data['level_user']=='guru') {
+                    <option value="kepsek" <?php if($data['level_user']=='kepsek') {
                       echo "Selected";
-                    } ?>>Guru</option>
-                    <option value="pdw" <?php if($data['level_user']=='pdw') {
+                    } ?>>Kepsek</option>
+                    <option value="g1" <?php if($data['level_user']=='g1') {
                       echo "Selected";
-                    } ?>>Pdw</option>
+                    } ?>>Guru Kelas 1</option>
+                    <option value="g2" <?php if($data['level_user']=='g2') {
+                      echo "Selected";
+                    } ?>>Guru Kelas 2</option>
+                    <option value="g3" <?php if($data['level_user']=='g3') {
+                      echo "Selected";
+                    } ?>>Guru Kelas 3</option>
+                    <option value="g4" <?php if($data['level_user']=='g4') {
+                      echo "Selected";
+                    } ?>>Guru Kelas 4</option>
+                    <option value="g5" <?php if($data['level_user']=='g5') {
+                      echo "Selected";
+                    } ?>>Guru Kelas 5</option>
+                    <option value="g6" <?php if($data['level_user']=='g6') {
+                      echo "Selected";
+                    } ?>>Guru Kelas 6</option>
                   </select>
                   </div>
                 </div>

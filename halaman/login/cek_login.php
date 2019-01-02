@@ -21,7 +21,8 @@ if($cek > 0){
 	
 	foreach($login as $data){
 	$_SESSION['username'] = $username;
-	$_SESSION['level'] = $data['level'];
+	$_SESSION['level_user'] = $data['level_user'];
+	$_SESSION['nip'] = $data['nip'];
 	$_SESSION['status'] = "login";
 	header("location:../../index.php");
 	}

@@ -19,7 +19,7 @@
     $foto = $_POST['foto'];
             
 
-    $query = mysqli_query($koneksi, "INSERT INTO guru VALUES ('$nip','$nama_guru','$jenkel','$tempat_lahir','$tgl_lahir','$status','$foto')");
+    $query = mysqli_query($koneksi, "INSERT INTO guru VALUES ('$nip','$nama_guru','$jenkel','$tempat_lahir','$tgl_lahir','$status')");
 
 
     if($query_tambah == TRUE){
@@ -38,32 +38,18 @@
     $tempat_lahir = $_POST['tempat_lahir'];
     $tgl_lahir = $_POST['tgl_lahir'];
     $status = $_POST['status'];
-    $ext_boleh = array('png','jpg','jpeg');
-            $foto = $_FILES['foto']['name'];
-            $x = explode('.', $foto);
-            $ext = strtolower(end($x));
-            $size = $_FILES['foto']['size'];
-            $file_tmp = $_FILES['foto']['tmp_name'];
-            $seleksi = mysqli_query($koneksi, "SELECT nip from guru WHERE nama_guru = '$nama_guru'");
-            $hasil = mysqli_num_rows($seleksi);
-
-                        if ($hasil == 0) {
-                            if (in_array($ext, $ext_boleh) === true) {
-                                if ($size < 1044070) {
-                    move_uploaded_file($file_tmp, '../foto/'.$foto);
-
+    
+    
      
-    $query_edit=mysqli_query($koneksi,"UPDATE guru SET nip='$nip',nama_guru='$nama_guru',jenkel='$jenkel', tempat_lahir='$tempat_lahir',tgl_lahir='$tgl_lahir',status='$status',foto='$foto'  WHERE nip='$id'");
+    $query_edit=mysqli_query($koneksi,"UPDATE guru SET nip='$nip',nama_guru='$nama_guru',jenkel='$jenkel', tempat_lahir='$tempat_lahir',tgl_lahir='$tgl_lahir',status='$status'  WHERE nip='$id'");
 
     if($query_edit==TRUE){
-      echo "<script>window.location.href='?halaman=guru'</script>";
+      // echo "<script>window.location.href='?halaman=guru'</script>";
     }else{
       echo "<script>alert('gagal')</script>";
     }
-    }
   }
-}
-}
+
 ?>
 
 <section class="content">
@@ -131,12 +117,7 @@
                       </div>
                     </div>
                     
-                    <div class="form-group">
-                      <label  class="col-sm-2 control-label">Foto Profil</label>
-                      <div class="col-sm-8">
-                        <input type="file" name="foto" class="form-control">
-                      </div>
-                    </div>
+                    
 
                   </div>
                   <!-- /.box-body -->

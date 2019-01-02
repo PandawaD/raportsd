@@ -1,228 +1,287 @@
 <?php
  // Define relative path from this script to mPDF
-$nama_dokumen='Cetak Laporan Barang -'.$_GET['val'];
+$nama_dokumen='Cetak Raport S2 -'.$_GET['val'];
 include '../../config/koneksi.php';
 include '../../dist/mpdf60/mpdf.php';
 $nis = $_GET['val'];
-$mpdf=new mPDF('utf-8', 'A4'); // Create new mPDF Document
- 
+$mpdf=new mPDF('utf-8', 'A4-L', 10.5); // Create new mPDF Document
+session_start() ;
 //Beginning Buffer to save PHP variables and HTML tags
 ob_start(); 
 ?>
+
 <!--sekarang Tinggal Codeing seperti biasanya. HTML, CSS, PHP tidak masalah.-->
 <!--CONTOH Code START-->
 
-
+<body>
 <h3><b><p align="center">RAPOR PESERTA DIDIK DAN PROFIL PESERTA DIDIK </h3></b></p>
-<pre>
+  <table  width="100%">
+    <tr>
   <?php 
                   
-  $query = mysqli_query($koneksi,"SELECT * FROM siswa WHERE nis='$nis'") or die(mysqli_error());
+    $query = mysqli_query($koneksi,"SELECT * FROM siswa WHERE nis='$nis'") or die(mysqli_error());
     while ($data = mysqli_fetch_array($query)) {  
   ?>
-    Nama Peserta Didik  : <?php echo $data['nama_siswa']; ?><br> 
-    NISN/NIS    : <?php echo $data['nisn']; ?>/<?php echo $data['nis']; ?><br>
-    Kelas     : <?php echo $data['kelas']; ?><br>
-    Nama Sekolah    : <?php echo ("SDN Randuagung 01"); ?><br>
-    Semester    : <?php echo ("Genap") ?><br>
-    Alamat Sekolah    : <?php echo ("JL. Raya Cendrawasih NO. 121"); ?><br>
-    Tahun Pelajaran :<?php echo ("YEAR(NOW())"); ?>
+      <td width="20%">Nama Peserta Didik</td>
+      <td width="1%">:</td>
+      <td width="35%"><?php echo $data['nama_siswa']; ?></td>
+      <td width="10%">Kelas </td>
+      <td width="1%">:</td>
+      <td width="10%"><?php echo $data['kelas']; ?></td>
+    </tr>
+    <tr>
+      <td width="20%">NISN/NIS</td>
+      <td width="1%">:</td>
+      <td width="35%"><?php echo $data['nisn']; ?>/<?php echo $data['nis']; ?></td>
+      <td width="10%">Semester </td>
+      <td width="1%">:</td>
+      <td width="10%"><?php echo ("Ganjil") ?></td>
+    </tr>
+    <tr>
+      <td width="20%">Nama Sekolah</td>
+      <td width="1%">:</td>
+      <td width="35%"><?php echo ("SDN Randuagung 01"); ?></td>
+      <td width="10%">Tahun Pelajaran </td>
+      <td width="1%">:</td>
+      <td width="10%"><?php date_default_timezone_set("Asia/Jakarta"); echo date('Y'); ?> - <?php date_default_timezone_set("Asia/Jakarta"); echo date('Y')+1; ?> </td>
+    </tr>
+
+    <tr>
+      <td width="20%">Alamat Sekolah</td>
+      <td width="1%">:</td>
+      <td width="35%"><?php echo ("JL. Raya Cendrawasih NO. 121"); ?></td>
   <?php } ?>
-</pre>
+    </tr>
+  </table> 
 <h4><b> A.   SIKAP</b></h4>
-<table width="500" border="1">
+<table width="100%" border="1">
   <tr>
-  
-    <td style="background-color: #708090 ;" colspan="2"><div align="center">Deskripsi</div></td>
+    <td style="background-color: #708090 ;" colspan="2" width="100%" height="35" ><div align="center">Deskripsi</div></td>
   </tr>
   <tr>
-    <td width="68"><table cellspacing="0" cellpadding="0">
-      <tr>
-        <td colspan="3" height="104" width="215"><?php echo ("Spiritual") ?></td>
+       <td  height="104" width="50%"><?php echo ("Spiritual") ?></td>
         <?php
           $query = mysqli_query($koneksi,"SELECT * FROM sikap JOIN siswa ON sikap.nis=siswa.nis WHERE sikap.nis='$nis' AND kategori='Spritual' AND smstr=2 ") or die(mysqli_error());
-    while ($data = mysqli_fetch_array($query)) {
+          while ($data = mysqli_fetch_array($query)) {
         ?>
-        <td colspan="" height="104" width="215">Ananda <?php echo $data['nama_siswa']; ?> ,<?php echo $data['nilai']; ?></td>
-      <?php } ?>
-      </tr>
-      <td width="302"><table cellspacing="0" cellpadding="0">
-      <tr>
-        <td colspan="3" height="104" width="215"><?php echo ("Sosial") ?></td>
+        <td  height="104" width="50%"> Ananda <?php echo $data['nama_siswa']; ?> ,<?php echo $data['nilai']; ?></td>
+        <?php } ?>
+  </tr>   
+  <tr>
+        <td height="104" width="50%"><?php echo ("Sosial") ?></td>
         <?php
           $query = mysqli_query($koneksi,"SELECT * FROM sikap JOIN siswa ON sikap.nis=siswa.nis WHERE sikap.nis='$nis' AND kategori='Sosial' AND smstr=2 ") or die(mysqli_error());
-    while ($data = mysqli_fetch_array($query)) {
+          while ($data = mysqli_fetch_array($query)) {
         ?>
-        <td colspan="3" height="104" width="215">Ananda <?php echo $data['nama_siswa']; ?> , <?php echo $data['nilai']; ?></td>
+        <td height="104" width="50%"> Ananda <?php echo $data['nama_siswa']; ?> , <?php echo $data['nilai']; ?></td>
       <?php } ?>
-      </tr>
-    </table></td>
-    
-    </table></td>
-  </tr>
-  
+  </tr>  
 </table>
 <h4><b> B.   PENGETAHUAN DAN KETERAMPILAN</b></h4>
-KKM Satuan Pendidikan : 60
-<table width="798" border="1">
+KKM Satuan Pendidikan : 65
+<table width="100%" border="1">
   <tr style="background-color: #708090 ;">
-    <td width="24" rowspan="2">NO</td>
-    <td width="215" rowspan="2"><p>Muatan</p>
-    <p>Pelajaran</p></td>
-    <td colspan="3"><div align="center">Pengetahuan</div></td>
-    <td colspan="3">Keterampilan</td>
+    <td width="3%" rowspan="2" align="center">NO</td>
+    <td width="215" rowspan="2" align="center">Muatan <br>
+    Pelajaran <br></td>
+    <td colspan="3" align="center">Pengetahuan</div></td>
+    <td colspan="3" align="center">Keterampilan</td>
   </tr>
   <tr style="background-color: #708090 ;">
-    <td width="29">Nilai</td>
-    <td width="59">Predikaat</td>
-    <td width="170">Deskripsi</td>
-    <td width="29">Nilai</td>
-    <td width="51">Predikat</td>
-    <td width="169">Deskripsi</td>
-  </tr>
-  <?php
-  
-          $query = mysqli_query($koneksi,"SELECT * FROM pk JOIN siswa ON pk.nis=siswa.nis JOIN mapel ON pk.kode_mapel=mapel.kode_mapel WHERE pk.nis='$nis'  AND smstr=2 ") or die(mysqli_error());
-          $no = 1;
-    while ($data = mysqli_fetch_array($query)) {
-        
+    <td width="29" align="center">Nilai</td>
+    <td width="59" align="center">Predikaat</td>
+    <td width="170" align="center">Deskripsi</td>
+    <td width="29" align="center">Nilai</td>
+    <td width="51" align="center">Predikat</td>
+    <td width="169" align="center">Deskripsi</td>
+  </tr>  
+          
+        <?php  
+          $query2 = mysqli_query($koneksi,"SELECT * FROM pk JOIN siswa ON pk.nis=siswa.nis JOIN mapel ON pk.kode_mapel=mapel.kode_mapel  WHERE pk.nis='$nis' AND pk.kode_kategori=4  AND smstr=2 ORDER BY mapel.nama_mapel ASC") or die(mysqli_error());
         ?>
+        
+        <?php  
+          $query = mysqli_query($koneksi,"SELECT * FROM pk JOIN siswa ON pk.nis=siswa.nis JOIN mapel ON pk.kode_mapel=mapel.kode_mapel  WHERE pk.nis='$nis' AND pk.kode_kategori=3  AND smstr=2 ORDER BY mapel.nama_mapel ASC") or die(mysqli_error());
+          $no = 1;
+          while ($data = mysqli_fetch_array($query)) {
+        ?>
+
   <tr>
-    <td><?php echo $no ?></td>
+    <td align="center"><?php echo $no ?></td>
     <td><?php echo $data['nama_mapel']; ?></td>
     <td><div align="center"><?php echo $data['nilai']; ?></div></td>
-    <?php
-      # code...
-    $no++;}  ?><!-- 
-    <td><div align="center"><?php echo $data['Predikat']; ?></div></td>
-    <td><table cellspacing="0" cellpadding="0">
-      <tr>
-        <td height="272" width="165"><?php echo $data['deskripsi']; ?></td>
-      </tr>
-    </table></td>
-    <td><div align="center"><?php echo $data['Nilai']; ?></div></td>
-    <td><div align="center"><?php echo $data['Predikat']; ?></div></td>
-    <td><table cellspacing="0" cellpadding="0">
-      <tr>
-        <td height="272" width="209"><?php echo $data['deskripsi']; ?></td>
-      </tr> -->
-    </table></td>
-  </tr>
+
+    <?php if (100 >= $data['nilai'] && $data['nilai'] > 88 ){?>
+    <td><div align="center"><?php echo ("A") ?></div></td>
+    <?php }else if (88 >= $data['nilai'] && $data['nilai'] > 76 ){?>
+    <td><div align="center"><?php echo ("B") ?></div></td>
+    <?php }else if (76 >= $data['nilai'] && $data['nilai'] >= 65 ){?>
+    <td><div align="center"><?php echo ("C") ?></div></td>
+    <?php }else if ( $data['nilai'] < 65 ){?>
+    <td><div align="center"><?php echo ("D") ?></div></td>
+    <?php } ?>
+
+    <?php  
+          $sql = mysqli_query($koneksi,"SELECT * FROM deskripsi WHERE kode_kategori=3 AND kode_mapel = '$data[kode_mapel]' AND kode_kelas = '$data[kode_kelas]' ") or die(mysqli_error());
+          while ($row = mysqli_fetch_array($sql)) {
+    ?>
+    <?php if (100 >= $data['nilai'] && $data['nilai'] > 88 ){?>
+    <td><div align="center">Ananda <?php echo $data['nama_siswa']; ?>bisa <?php echo $row['kat1']; ?></div></td>
+    <?php }else if (88 >= $data['nilai'] && $data['nilai'] > 76 ){?>
+    <td><div align="center">Ananda <?php echo $data['nama_siswa']; ?>bisa <?php echo $row['kat2']; ?></div></td>
+    <?php }else if (76 >= $data['nilai'] && $data['nilai'] >= 65 ){?>
+    <td><div align="center">Ananda <?php echo $data['nama_siswa']; ?>bisa <?php echo $row['kat3']; ?></div></td>
+    <?php }else if ($data['nilai'] < 65 ){?>
+    <td><div align="center">Ananda <?php echo $data['nama_siswa']; ?>bisa <?php echo $row['kat4']; ?></div></td>
+    <?php } ?>
+    <?php } ?>
+
+    <!-- KETERAMPILAN -->
+
+    <?php $data2 = mysqli_fetch_array($query2) ; ?>
+    <td><div align="center"><?php echo $data2['nilai']; ?></div></td>
+        
+    <?php if (100 >= $data2['nilai'] && $data2['nilai'] > 88 ){?>
+    <td><div align="center"><?php echo ("A") ?></div></td>
+    <?php }else if (88 >= $data2['nilai'] && $data2['nilai'] > 76 ){?>
+    <td><div align="center"><?php echo ("B") ?></div></td>
+    <?php }else if (76 >= $data2['nilai'] && $data2['nilai'] >= 65 ){?>
+    <td><div align="center"><?php echo ("C") ?></div></td>
+    <?php }else if ($data2['nilai'] < 65 ){?>
+    <td><div align="center"><?php echo ("D") ?></div></td>
+    <?php } ?>
+
+    <?php  
+          $sql2 = mysqli_query($koneksi,"SELECT * FROM deskripsi WHERE kode_kategori=4 AND kode_mapel = '$data[kode_mapel]' AND kode_kelas = '$data[kode_kelas]' ") or die(mysqli_error());
+          while($row2 = mysqli_fetch_array($sql2)){
+    ?>
+    <?php if (100 >= $data2['nilai'] && $data2['nilai'] > 88 ){?>
+    <td><div align="center">Ananda <?php echo $data['nama_siswa']; ?>bisa <?php echo $row2['kat1']; ?></div></td>
+    <?php }else if (88 >= $data2['nilai'] && $data2['nilai'] > 76 ){?>
+    <td><div align="center">Ananda <?php echo $data['nama_siswa']; ?> bisa <?php echo $row2['kat2']; ?></div></td>
+    <?php }else if (76 >= $data2['nilai'] && $data2['nilai'] >= 65 ){?>
+    <td><div align="center">Ananda <?php echo $data['nama_siswa']; ?> bisa <?php echo $row2['kat3']; ?></div></td>
+    <?php }else if ($data2['nilai'] < 65 ){?>
+    <td><div align="center">Ananda <?php echo $data['nama_siswa']; ?> bisa <?php echo $row2['kat3']; ?></div></td>
+    <?php }} ?>
+
+    <?php  $no++; }?>
+  </tr>    
+</table>
   
-<body>
+  
 <h4><b> C.   EKSTRA KURIKULER</b></h4>
-<table width="435" border="1">
-  <tr>
-    <td width="26"><div align="center">No</div></td>
-    <td width="186"><div align="center">Kegiatan Ekstrakurikuler</div></td>
-    <td width="201"><div align="center">Kegiatan</div></td>
+<table width="100%" border="1" >
+  <tr style="background-color: #708090 ;" height="35">
+    <td width="3%" ><div align="center">No</div></td>
+    <td width="40%"><div align="center">Kegiatan Ekstrakurikuler</div></td>
+    <td width="40%"><div align="center">Kegiatan</div></td>
   </tr>
-  <tr>
     <?php
           $query = mysqli_query($koneksi,"SELECT * FROM nilai_ekskul JOIN ekskul ON nilai_ekskul.xul=ekskul.xul WHERE nilai_ekskul.nis='$nis' AND smstr=2 ") or die(mysqli_error());
       $no =1;
     while ($data = mysqli_fetch_array($query)) {
     ?>
-    <td><div align="center"><?php echo $no ?></div></td>
-    <td><div align="center">
-      <table cellspacing="0" cellpadding="0">
-          <tr>
-            <td colspan="3" height="54" width="215"><?php echo $data['ekstra']; ?></td>
-            <td colspan="3" height="54" width="215"></td>
-          </tr>
-      </table>
-    </div></td>
-    <td><div align="center"><?php echo $data['nilai']; ?></div></td>
+  <tr>
+    <td width="3%" align="center"><?php echo $no ?></td>
+    <td  height="54" width="40%"><?php echo $data['ekstra']; ?></td>
+    <td height="54" width="40%"><div align="center"><?php echo $data['nilai']; ?></div></td>
   </tr>
   <?php $no++;} ?>
 </table>
 <h4><b> D.   SARAN-SARAN</b></h4>
-<table width="430" height="81" border="1">
-  <tr>
+<table width="100%" height="81" border="1">
     <?php
           $query = mysqli_query($koneksi,"SELECT * FROM saran WHERE saran.nis='$nis' AND smstr=2 ") or die(mysqli_error());
       $no =1;
     while ($data = mysqli_fetch_array($query)) {
     ?>
-    <td width="420"><div align="center"><?php echo $data['saran']; ?></div></td>
+  <tr>
+    <td width="420"  align="center"><?php echo $data['saran']; ?></td>
   </tr>
   <?php } ?>
 </table>
-<h4><b> E.   PRESTASI</b></h4>
-<table width="432" border="1">
-  <tr>
-    <td width="45"><div align="center">No</div></td>
-    <td width="128"><div align="center">Jenis Prestasi</div></td>
-    <td width="237"><div align="center">Kegiatan</div></td>
+
+<h4><b> E. TINGGI DAN BERAT BADAN</b></h4>
+<table width="100%" border="1">
+  <tr style="background-color: #708090 ;" height="35">
+    <td width="3%" ><div align="center">No</div></td>
+    <td width="50%"><div align="center" >Aspek Yang Dinilai</div></td>
+    <td width="47%" ><div align="center" >Centimeter</div></td>
   </tr>
-  <tr>
+  
+   
     <?php
-          $query = mysqli_query($koneksi,"SELECT * FROM prestasi WHERE prestasi.nis='$nis' ") or die(mysqli_error());
+      $sqt = mysqli_query($koneksi,"SELECT * FROM fisik WHERE fisik.nis='$nis'AND smstr=2 ") or die(mysqli_error());
       $no =1;
-    while ($data = mysqli_fetch_array($query)) {
+    while ($raw = mysqli_fetch_array($sqt)) {
     ?>
-    <td><div align="center"><?php echo $no ?></div></td>
-    <td><div align="center"></div><?php echo $data['prestasii']; ?></td>
-    <td><div align="center"><?php echo $data['detail']; ?></div></td>
-  </tr>
+    <tr>
+    <td rowspan="1"><div align="center"><?php echo 1 ?></div></td>
+    <td><div align=""><?php echo ("Tinggi Badan") ?></div></td>
+    <td><div align=""><?php echo $raw['tinggi']; ?></div></td>
+    </tr>
+    <tr>
+    <td rowspan=""><div align="center"><?php echo 2 ?></div></td>
+    <td><div align=""><?php echo ("Berat Badan") ?></div></td>
+    <td><div align=""><?php echo $raw['berat']; ?></div></td>
+    </tr>
+  
   <?php $no++;} ?>
 
 </table>
-<h4><b> F. TINGGI DAN BERAT BADAN</b></h4>
-<table width="432" border="1">
-  <tr>
-    <td width="45"><div align="center">No</div></td>
-    <td width="128"><div align="center">Aspek Yg Dinilai</div></td>
-    <td width="237"><div align="center" rowspan="2" colspan="3" >Semester <td>Ganjil</td><td>Genap</td></div></td>
-    
-  </tr>
-  <tr>
-    <?php
-          $query = mysqli_query($koneksi,"SELECT * FROM prestasi WHERE prestasi.nis='$nis' ") or die(mysqli_error());
-      $no =1;
-    while ($data = mysqli_fetch_array($query)) {
-    ?>
-    <td><div align="center"><?php echo $no ?></div></td>
-    <td><div align="center"></div><?php echo $data['prestasii']; ?></td>
-    <td><div align="center"><?php echo $data['detail']; ?></div></td>
-  </tr>
-  <?php $no++;} ?>
-
-</table>
-<h4><b> G.   KONDISI DAN KESEHATAN</b></h4>
-<table width="432" border="1">
-  <tr>
-    <td width="45"><div align="center">No</div></td>
-    <td width="128"><div align="center">Aspek Fisik</div></td>
-    <td width="237"><div align="center">keterangan</div></td>
-  </tr>
+<h4><b> F.   KONDISI DAN KESEHATAN</b></h4>
+<table width="100%" border="1">
   <?php
           $query = mysqli_query($koneksi,"SELECT * FROM kesehatan WHERE kesehatan.nis='$nis' AND smstr=2 ") or die(mysqli_error());
       $no =1;
     while ($data = mysqli_fetch_array($query)) {
     ?>
-  <tr>
-    <td width="45"><div align="center">1</div></td>
-    <td width="128"><div align="center">Penglihatan</div></td>
-    <td><div align="center"><?php echo $data['penglihatan']; ?></div></td>
+  <tr style="background-color: #708090 ;">
+    <td width="3%"><div align="center">No</div></td>
+    <td width="128"><div align="center">Aspek Fisik</div></td>
+    <td width="237"><div align="center">keterangan</div></td>
   </tr>
   <tr>
-    <td width="45"><div align="center">2</div></td>
-    <td width="128"><div align="center">Pendengaran</div></td>
-    <td><div align="center"><?php echo $data['pendengaran']; ?></div></td>
+    <td width="45"><div align="">1</div></td>
+    <td width="128"><div align="">Penglihatan</div></td>
+    <td><div align=""><?php echo $data['penglihatan']; ?></div></td>
   </tr>
   <tr>
-    <td width="45"><div align="center">3</div></td>
-    <td width="128"><div align="center">Gigi</div></td>
-    <td><div align="center"><?php echo $data['gigi']; ?></div></td>
+    <td width="45"><div align="">2</div></td>
+    <td width="128"><div align="">Pendengaran</div></td>
+    <td><div align=""><?php echo $data['pendengaran']; ?></div></td>
+  </tr>
+  <tr>
+    <td width="45"><div align="">3</div></td>
+    <td width="128"><div align="">Gigi</div></td>
+    <td><div align=""><?php echo $data['gigi']; ?></div></td>
   </tr>
   
   <?php } ?>
 
 </table>
-<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
+<h4><b> E.   PRESTASI</b></h4>
+<table width="100%" border="1">
+  <tr style="background-color: #708090 ;" height="35">
+    <td width="3%"><div align="center">No</div></td>
+    <td width="128"><div align="center">Jenis Prestasi</div></td>
+    <td width="237"><div align="center">Kegiatan</div></td>
+  </tr>
+    <?php
+          $query = mysqli_query($koneksi,"SELECT * FROM prestasi WHERE prestasi.nis='$nis' ") or die(mysqli_error());
+      $no =1;
+    while ($data = mysqli_fetch_array($query)) {
+    ?>
+  <tr>
+    <td><div align=""><?php echo $no ?></div></td>
+    <td><div align=""></div><?php echo $data['prestasii']; ?></td>
+    <td><div align=""><?php echo $data['detail']; ?></div></td>
+  </tr>
+  <?php $no++;} ?>
+</table>
 <h4><b> H.   KETIDAKHADIRAN</b></h4>
-<table width="235" border="1">
+<table width="40%" border="1">
   
   <tr>
     <td width="126"> <div align="left">Sakit</div></td>
@@ -255,146 +314,92 @@ KKM Satuan Pendidikan : 60
   </tr>
   <?php } ?>
 </table>
-<p>&nbsp;</p>
+<br><br>
+<table width="100%" >
+  <tr>
+    <td width="10%">Keputusan :</td>
+  </tr>
+  <tr>
+    <td  width="50%" colspan="1">Berdasarkan hasil yang dicapai pada semester 1 dan 2, peserta didik ditetapkan</td>
+    <td width="50%">Naik ke kelas ......................................(..........................................)</td>
+  </tr>
+  <tr>
+    <td width="50%"></td>
+    <td width="50%">Tinggal ke kelas ..................................(..........................................)</td>
+  </tr>
+</table>
+<table width="100%">
+  <tr>
+    <td width="50%" align="center">
+    Mengetahui <br>
+    Orang Tua/ Wali,
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <?php
+      $query = mysqli_query($koneksi,"SELECT * FROM siswa WHERE nis='$nis'") or die(mysqli_error());
+    while ($data = mysqli_fetch_array($query)) {
+    ?>
+    ( <?php echo $data['ayah']; ?> / <?php echo $data['ibu']; ?> )
+    <?php } ?>
+    </td>
+    <td width="50%" align="center">
+      Jember, <?php date_default_timezone_set("Asia/Jakarta"); echo date('d F Y'); ?>      
+      <br>
+      Guru Kelas
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+    <?php session_start(); $sid = $_SESSION['nip'];   ?>
+    <?php
+      $query = mysqli_query($koneksi,"SELECT * FROM login JOIN guru ON login.nip = guru.nip WHERE login.nip='$sid'") or die(mysqli_error());
+    while ($data = mysqli_fetch_array($query)) {
+    ?>
+      
+      ( <u> <?php  echo $data['nama_guru']; ?> </u> ) <br>
+      NIP. <?php  echo $sid ?>
+    <?php } ?>
+    </td>
+  </tr>
+  <tr>
+    <td align="center" colspan="2">
+    Mengetahui <br>
+    Kepala Sekolah,
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    
+    <?php
+  $query = mysqli_query($koneksi,"SELECT * FROM login JOIN guru ON login.nip = guru.nip WHERE level_user='kepsek'") or die(mysqli_error());
+    while ($data = mysqli_fetch_array($query)) {
+    ?>
+      
+      ( <u> <?php  echo $data['nama_guru']; ?> </u> ) <br>
+      NIP. <?php  echo $data['nip']; ?>
+    <?php } ?>
+    </td>  
+  </tr>
+</table>
+
 </body>
 </html>
-<p>&nbsp;</p>
-<pre>
-<h3>              Mengetahui                      Jember,<?php date_default_timezone_set("Asia/Jakarta"); echo date('d F Y'); ?>                                                
-            Orang Tua/Wali,                   Guru Kelas</h3>
-          
-          
-          
-          
-          ........................                                0
-<h3>                                               NIP :</h3>
-
-<h3>                    Mengetahui,
-                  Kepala Sekolah</h3>
-              
-              
-              
-              
-              
-                            0
-<h3>                 NIP :</h3>
-</pre>
-
-
-
-  <?php
-  
-
-/*
-//Query Untuk Menampilkan Isi Table Logistik Masuk
-$query = $connect->query("SELECT * FROM v_tlk WHERE no_regist_keluar='$no_regist_keluar'");
-foreach ($query as $data) {
-  $tgl_regist = $data['tgl_keluar'];
-  $tgl_indo = date('d-m-Y',strtotime($tgl_regist));
-?>
-<table>
-  <tr>
-    <td>Penerima : </td>
-    <td><?php echo $data['nm_penerima']; ?></td>
-    <td style="width: 350px;"></td>
-    <td>Tanggal : </td>
-    <td><?php echo $tgl_indo; ?></td>
-  </tr>
-  <tr>
-    <td colspan="2"></td>
-    <td></td>
-    <td>Nomor :</td>
-    <td><?php echo $no_regist_keluar; ?></td>
-  </tr>
-</table>
-<?php } ?>
-<br>
-<?php 
-$query2 = $connect->query("SELECT * FROM trx_detail_logistik_keluar tdlk JOIN logistik ON tdlk.id_logistik=logistik.id_logistik JOIN anggaran ON logistik.id_anggaran=anggaran.id_anggaran WHERE no_regist_keluar='$no_regist_keluar' ");
-$no = 1;
-foreach($query2 as $data2){
-?>
-<table border="1" style="border-collapse: collapse;">
-  <tr>
-    <td style="text-align: center;">No.</td>
-    <td style="text-align: center;">Nama Obat</td>
-    <td style="text-align: center;">Satuan Kemasan</td>
-    <td style="text-align: center;">Jumlah Diberikan</td>
-    <td style="text-align: center;">Harga Per Unit+PPN</td>
-    <td style="text-align: center;">Jumlah Harga</td>
-    <td style="text-align: center;">KET/ETD</td>
-  </tr>
-  <tr>
-    <td><?php echo $no++; ?> </td>
-    <td><?php echo $data2['nm_logistik']; ?></td>
-    <td><?php echo $data2['satuan']; ?></td>
-    <td><?php echo $data2['qty']; ?></td>
-    <td><?php echo $data2['harga_satuan']+($data2['harga_satuan']/10); ?></td>
-    <td><?php echo $data2['subtotal']; ?></td>
-    <td><?php echo $data2['asal_anggaran']; ?></td>
-  </tr>
-</table>
-<?php } ?>
-<p style="text-align: right;">Lumajang, <?php echo $tgl_indo; ?></p>
-<table align="center">
-  <tr>
-    <td style="text-align: center;">Kepala Instansi</td>
-    <td width="150px;"></td>
-    <td style="text-align: center;">Yang Menyerahkan</td>
-    <td width="150px;"></td>
-    <td style="text-align: center">Penerima</td>
-  </tr>
-  <tr style="">
-    <td colspan="5" style="height: 80px;"></td>
-  </tr>
-  <tr>
-    <?php
-    $query3 = $connect->query("SELECT nama as nm_pegawai,nip,nm_penerima,nip_penerima FROM trx_logistik_keluar tlk JOIN pegawai ON tlk.id_pegawai_pimpinan=pegawai.id_pegawai WHERE no_regist_keluar='$no_regist_keluar'");
-    foreach($query3 as $data3){
-      $nip_pimpinan = $data3['nip'];
-    ?>
-    <td style="text-align: center;"><?php echo $data3['nm_pegawai'];; ?></td>
-    <?php } ?>
-    <td rowspan="3"></td>
-    <?php
-    $query4 = $connect->query("SELECT nama as nm_pegawai,nip,nm_penerima,nip_penerima FROM trx_logistik_keluar tlk JOIN pegawai ON tlk.id_pegawai_pen_jawab=pegawai.id_pegawai WHERE no_regist_keluar='$no_regist_keluar'");
-    foreach($query4 as $data4){
-      $nip_penanggung_jawab = $data4['nip'];
-      $nip_penerima = $data4['nip_penerima'];
-    ?>
-    <td style="text-align: center;"><?php echo $data4['nm_pegawai']; ?></td>
-    <td rowspan="3"></td>
-    <td style="text-align: center"><?php echo $data4['nm_penerima']; ?></td>
-    <?php } ?>
-  </tr>
-  
-  <tr>
-    <td><hr style="color: black;"></td>
-    <td><hr style="color: black;"></td>
-    <td><hr style="color: black"></td>
-  </tr>
-  <tr>
-    <td style="text-align: center;"><?php echo $nip_pimpinan; ?></td>
-    <td style="text-align: center;"><?php echo $nip_penanggung_jawab; ?></td>
-    <td style="text-align: center"><?php echo $nip_penerima; ?></td>
-
-  </tr> 
-</table>
-
-
-<!--CONTOH Code END-->
- 
-*/
-?>
 <?php
 
-// $html = ob_get_contents(); //Proses untuk mengambil hasil dari OB..
-// ob_end_clean();
-// //Here convert the encode for UTF-8, if you prefer the ISO-8859-1 just change for $mpdf->WriteHTML($html);
-// $mpdf->WriteHTML(utf8_encode($html));
-// $mpdf->Output($nama_dokumen.".pdf" ,'I');
-// exit;
-// header("location:index.php?halaman=transaksi");
+$html = ob_get_contents(); //Proses untuk mengambil hasil dari OB..
+ob_end_clean();
+//Here convert the encode for UTF-8, if you prefer the ISO-8859-1 just change for $mpdf->WriteHTML($html);
+$mpdf->WriteHTML(utf8_encode($html));
+$mpdf->Output($nama_dokumen.".pdf" ,'I');
+exit;
 ?>
 
 

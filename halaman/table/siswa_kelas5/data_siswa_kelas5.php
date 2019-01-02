@@ -11,10 +11,17 @@
 
   if(isset($_GET['naik'])){
       
-    $query_detadd = mysqli_query($koneksi,"UPDATE siswa SET kelas = (kelas+1) WHERE nis = '$_GET[naik]'");      
-      
-   if ($query_detadd == TRUE) {
-      echo "<script>window.location.href='?halaman=data_siswa_kelas5'</script>";
+    $query_detadd = mysqli_query($koneksi,"UPDATE siswa SET kelas = (kelas+1) WHERE nis = '$_GET[naik]'");
+
+    $query_delete1 = mysqli_query($koneksi,"DELETE FROM sikap WHERE nis='$_GET[naik]'")or die(mysql_error());
+    $query_delete2 = mysqli_query($koneksi,"DELETE FROM pk WHERE nis='$_GET[naik]'")or die(mysql_error());
+    $query_delete3 = mysqli_query($koneksi,"DELETE FROM nilai_ekskul WHERE nis='$_GET[naik]'")or die(mysql_error());  
+    $query_delete4 = mysqli_query($koneksi,"DELETE FROM saran WHERE nis='$_GET[naik]'")or die(mysql_error());
+    $query_delete5 = mysqli_query($koneksi,"DELETE FROM fisik WHERE nis='$_GET[naik]'")or die(mysql_error());
+    $query_delete6 = mysqli_query($koneksi,"DELETE FROM kesehatan WHERE nis='$_GET[naik]'")or die(mysql_error());
+    $query_delete7 = mysqli_query($koneksi,"DELETE FROM absen WHERE nis='$_GET[naik]'")or die(mysql_error());
+   if ($query_detadd == TRUE  && $query_delete1 == TRUE  && $query_delete2 == TRUE  && $query_delete3 == TRUE  && $query_delete4 == TRUE  && $query_delete5 == TRUE  && $query_delete6 == TRUE  && $query_delete7 == TRUE) {
+      echo "<script>window.location.href='?halaman=data_siswa_kelas1'</script>";
     }else{
       echo "<script>alert('gagal')</script>";
     }
@@ -90,7 +97,7 @@
                             <a class="btn btn-primary"  href="halaman/cetak/genap.php?val=<?php echo $data['nis']; ?>"><li class="fa fa-print">S2</li></a>
                             <a class="btn btn-warning" href="?halaman=edit_data_siswa_kelas5&id=<?php echo $data['nis'] ?>"><li class="fa fa-pencil"></li></a>
                             <a class="btn btn-danger " href="?halaman=data_siswa_kelas5&delete=<?php echo $data['nis'] ?>" onclick="return confirm('Anda Yakin Ingin Menghapus Data?')"> <li class="fa fa-close"></li> </a>
-                            <a class="btn btn-success" href="?halaman=data_siswa_kelas5&naik=<?php echo $data['nis'] ?>"> <li class="fa fa-arrow-up"></li> </a>
+                            <a class="btn btn-success" href="?halaman=data_siswa_kelas5&naik=<?php echo $data['nis'] ?>" onclick="return confirm('Data terhapus saat siswa naik kelas, Yakin?')"> <li class="fa fa-arrow-up"></li> </a>
                           </td>  
                         </tr>
                         <?php $no++;} ?>

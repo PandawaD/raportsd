@@ -21,9 +21,9 @@
     $kode_mapel = $_POST['kode_mapel'];
     $kode_kelas = $_POST['kode_kelas'];
     $kode_subtema = $_POST['kode_subtema'];
-    $deskripsi = $_POST['deskripsi'];
+    
 
-    $query_tambah = mysqli_query($koneksi,"INSERT INTO kopetensi VALUES('$kd','$kode_kategori','$kode_kelas','$kode_mapel','$kode_subtema','$deskripsi')");
+    $query_tambah = mysqli_query($koneksi,"INSERT INTO kopetensi VALUES('$kd','$kode_kategori','$kode_kelas','$kode_mapel','$kode_subtema')");
      
     if($query_tambah == TRUE){
      echo "<script>window.location.href='?halaman=kopetensi'</script>";
@@ -133,12 +133,6 @@
                         </div>
                       </div>
 
-                      <div class="form-group">
-                      <label  class="col-sm-2 control-label">Deskripsi</label>
-                      <div class="col-sm-8">
-                        <textarea name="deskripsi" class="form-control"></textarea>
-                      </div>
-                    </div>                                     
                   </div>
                   <!-- /.box-body -->
                   <div class="box-footer">
@@ -172,7 +166,6 @@
                   <th>Mata Pelajaran</th>
                   <th>Nama Kategori</th>
                   <th>Subtema</th>
-                  <th>Deskripsi</th>
                   <th>Pilihan</th>
                 </tr>
                 </thead>
@@ -188,7 +181,6 @@
                     <td ><?php echo $data['nama_mapel'] ?></td>
                     <td ><?php echo $data['nama_kategori'] ?></td> 
                     <td ><?php echo $data['subtema'] ?></td> 
-                    <td ><?php echo $data['deskripsi'] ?></td> 
                     <td>
 
                       <button class="btn btn-warning click-edit" id="<?php echo $data['kd'] ?>"><li class="fa fa-pencil"></li></button>

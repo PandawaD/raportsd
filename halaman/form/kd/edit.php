@@ -81,13 +81,7 @@
                     </select>
                   </div>
                 </div>
-
-                    <div class="form-group">
-                      <label  class="col-sm-3 control-label">Deskripsi</label>
-                      <div class="col-sm-7">
-                        <textarea name="kat1" class="form-control"><?php echo $data['deskripsi'] ?></textarea>
-                      </div>
-                    </div>  
+  
              
                   </div>
               

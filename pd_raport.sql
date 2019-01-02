@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 22, 2018 at 02:17 PM
+-- Generation Time: Dec 27, 2018 at 08:27 AM
 -- Server version: 10.1.9-MariaDB
 -- PHP Version: 5.6.15
 
@@ -39,7 +39,7 @@ CREATE TABLE `absen` (
 --
 
 INSERT INTO `absen` (`nis`, `smstr`, `sakit`, `ijin`, `alpa`) VALUES
-('2555', 1, 4, 1, 1),
+('2985', 1, 4, 1, 1),
 ('2904', 2, 2, 3, 1);
 
 -- --------------------------------------------------------
@@ -64,12 +64,12 @@ CREATE TABLE `deskripsi` (
 --
 
 INSERT INTO `deskripsi` (`idd`, `kode_mapel`, `kode_kelas`, `kode_kategori`, `kat1`, `kat2`, `kat3`, `kat4`) VALUES
-(3, 11, 1, 3, 'bisa nulis 4 lkkmsdfasdfaaaaaaaaaaaaaaaaaaaaaaaaaaasdfsdfsdfsdf', 'bisa nulis 3 angka sadkf;sadm as fsdlaflsdaf nsdafjsdf', 'bisa nulis 2 angka angka dealkdfkdjsafnsadnfknsdlkanfkalsfd jhhbjhbh hbjhbh', 'bisa nulis 1  sdamf iasdmfisadf imasidmf'),
-(4, 11, 1, 4, 'tau 4 angka', 'tau 3 angka', 'tau 2 angka', 'tau 1 angka'),
-(5, 12, 1, 3, 'menyanyi 4 lagu', 'menyanyi 3 lagu', 'menyanyi 2 lagu', 'menyanyi 1 lagu'),
-(6, 12, 1, 4, 'tau lagu 4 lagu daerah', 'tau lagu 3 lagu daerah', 'tau lagu 2 lagu daerah', 'tau lagu 1 lagu daerah'),
-(7, 9, 1, 3, 'Menceritakan kegiatan sesuai dengan aturan yang berlaku dalam kehidupan sehari-hari di rumah. Menceritakan, pengalaman kebersamaan dalam keberagaman karakteristik individu di rumah.', 'Menceritakan kegiatan sesuai dengan aturan yang berlaku dalam kehidupan sehari-hari di rumah. Menceritakan, pengalaman kebersamaan dalam keberagaman  individu di rumah.', 'Menceritakan kegiatan sesuai dengan aturan yang berlaku dalam kehidupan sehari-hari di rumah. dan pengalaman  kebersamaan di rumah.', 'perlu bimbingan'),
-(9, 9, 1, 4, 'bagus', 'bagus', 'bagus', 'bagus');
+(3, 11, 1, 4, 'bisa nulis 4 lkkmsdfasdfaaaaaaaaaaaaaaaaaaaaaaaaaaasdfsdfsdfsdf', 'bisa nulis 3 angka sadkf;sadm as fsdlaflsdaf nsdafjsdf', 'bisa nulis 2 angka angka dealkdfkdjsafnsadnfknsdlkanfkalsfd jhhbjhbh hbjhbh', 'bisa nulis 1  sdamf iasdmfisadf imasidmf'),
+(4, 11, 1, 3, 'tau 4 angka', 'tau 3 angka', 'tau 2 angka', 'tau 1 angka'),
+(5, 12, 1, 4, 'menyanyi 4 lagu', 'menyanyi 3 lagu', 'menyanyi 2 lagu', 'menyanyi 1 lagu'),
+(6, 12, 1, 3, 'tau lagu 4 lagu daerah', 'tau lagu 3 lagu daerah', 'tau lagu 2 lagu daerah', 'tau lagu 1 lagu daerah'),
+(7, 9, 1, 4, 'Menceritakan kegiatan sesuai dengan aturan yang berlaku dalam kehidupan sehari-hari di rumah. Menceritakan, pengalaman kebersamaan dalam keberagaman karakteristik individu di rumah.', 'Menceritakan kegiatan sesuai dengan aturan yang berlaku dalam kehidupan sehari-hari di rumah. Menceritakan, pengalaman kebersamaan dalam keberagaman  individu di rumah.', 'Menceritakan kegiatan sesuai dengan aturan yang berlaku dalam kehidupan sehari-hari di rumah. dan pengalaman  kebersamaan di rumah.', 'perlu bimbingan'),
+(9, 9, 1, 3, 'bagus', 'bagus', 'bagus', 'bagus');
 
 -- --------------------------------------------------------
 
@@ -108,7 +108,7 @@ CREATE TABLE `fisik` (
 --
 
 INSERT INTO `fisik` (`nis`, `smstr`, `tinggi`, `berat`) VALUES
-('2555', 1, 150, 60);
+('2985', 1, 150, 60);
 
 -- --------------------------------------------------------
 
@@ -171,8 +171,8 @@ CREATE TABLE `kategori` (
 INSERT INTO `kategori` (`kode_kategori`, `nama_kategori`) VALUES
 (1, 'Spiritual'),
 (2, 'Sosial'),
-(3, 'Keterampilan'),
-(4, 'Pengetahuan');
+(3, 'Pengetahuan'),
+(4, 'Keterampilan');
 
 -- --------------------------------------------------------
 
@@ -222,8 +222,8 @@ CREATE TABLE `kesehatan` (
 --
 
 INSERT INTO `kesehatan` (`nis`, `smstr`, `penglihatan`, `pendengaran`, `gigi`) VALUES
-('2555', 1, 'baik', 'baik', 'baik'),
-('0', 1, 'baik', 'baik', 'baik');
+('2985', 1, 'baik', 'baik', 'baik'),
+('2959', 1, 'baik', 'baik', 'baik');
 
 -- --------------------------------------------------------
 
@@ -236,24 +236,23 @@ CREATE TABLE `kopetensi` (
   `kode_kategori` int(10) NOT NULL,
   `kode_kelas` int(10) NOT NULL,
   `kode_mapel` int(10) NOT NULL,
-  `kode_subtema` int(10) NOT NULL,
-  `deskripsi` text NOT NULL
+  `kode_subtema` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `kopetensi`
 --
 
-INSERT INTO `kopetensi` (`kd`, `kode_kategori`, `kode_kelas`, `kode_mapel`, `kode_subtema`, `deskripsi`) VALUES
-('1.1.1.mat.3.1', 4, 1, 11, 1, 'Menjelaskan makna bilangan cacah sampai dengan 99 sebagai banyak anggota suatu kumpulan objek'),
-('1.1.1.mat.3.2', 4, 1, 11, 1, 'Menjelaskan bilangan sampai dua angka dan nilai tempat penyusun lambang bilangan menggunakan kumpulan benda konkret serta cara membacanya.'),
-('1.1.1.mat.4.1', 3, 1, 11, 1, 'Menyajikan bilangan cacah sampai dengan 99 yang bersesuaian dengan banyak anggota kumpulan objek yang disajikan.'),
-('1.1.1.ppkn.1.2', 1, 2, 9, 1, 'Menunjukkan sikap patuh aturan agama yang dianut dalam kehidupan seharihari di rumah '),
-('1.1.1.ppkn.2.2', 2, 1, 9, 1, 'Melaksanakan aturan yang berlaku dalam kehidupan sehari-hari di rumah'),
-('1.1.1.ppkn.3.2', 4, 1, 9, 1, ''),
-('1.1.1.ppkn.4.2', 3, 1, 9, 1, ''),
-('1.1.1.sbdp.3.1', 4, 1, 12, 1, 'Mengenal elemen musik melalui lagu.'),
-('1.1.1.sbdp.4.2', 3, 1, 12, 1, 'Menirukan elemen musik melalui lagu.');
+INSERT INTO `kopetensi` (`kd`, `kode_kategori`, `kode_kelas`, `kode_mapel`, `kode_subtema`) VALUES
+('1.1.1.mat.3.1', 3, 1, 11, 1),
+('1.1.1.mat.3.2', 3, 1, 11, 1),
+('1.1.1.mat.4.1', 4, 1, 11, 1),
+('1.1.1.ppkn.1.2', 1, 2, 9, 1),
+('1.1.1.ppkn.2.2', 2, 1, 9, 1),
+('1.1.1.ppkn.3.2', 3, 1, 9, 1),
+('1.1.1.ppkn.4.2', 4, 1, 9, 1),
+('1.1.1.sbdp.3.1', 3, 1, 12, 1),
+('1.1.1.sbdp.4.2', 4, 1, 12, 1);
 
 -- --------------------------------------------------------
 
@@ -266,7 +265,7 @@ CREATE TABLE `login` (
   `nip` varchar(25) NOT NULL,
   `username` varchar(30) NOT NULL,
   `password` varchar(30) NOT NULL,
-  `level_user` varchar(10) NOT NULL DEFAULT 'guru'
+  `level_user` enum('admin','kepsek','g1','g2','g3','g4','g5','g6') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -274,8 +273,9 @@ CREATE TABLE `login` (
 --
 
 INSERT INTO `login` (`id_user`, `nip`, `username`, `password`, `level_user`) VALUES
-(2, '197403251999121001', 'rahmatullah', 'admin', 'admin'),
-(3, '-----------', 'rifatul', '123', 'guru');
+(4, '197403251999121001', 'rahmatullah', 'admin', 'admin'),
+(5, '-----------', 'rifa', 'rifa', 'g1'),
+(6, '195904151987031005', 'katimin', 'katimin', 'kepsek');
 
 -- --------------------------------------------------------
 
@@ -333,7 +333,7 @@ CREATE TABLE `nilai_ekskul` (
 --
 
 INSERT INTO `nilai_ekskul` (`nis`, `xul`, `nilai`, `smstr`) VALUES
-('2555', 1, 'baik', 1);
+('2985', 1, 'baik', 1);
 
 -- --------------------------------------------------------
 
@@ -356,20 +356,22 @@ CREATE TABLE `pk` (
 --
 
 INSERT INTO `pk` (`nis`, `smstr`, `kd`, `nilai`, `kode_kategori`, `kode_kelas`, `kode_mapel`) VALUES
-('2555', 1, '1.1.1.mat.3.1', 82, 4, 1, 11),
-('2555', 1, '1.1.1.mat.4.1', 80, 3, 1, 11),
-('2555', 1, '1.1.1.sbdp.3.1', 92, 4, 1, 12),
-('2555', 1, '1.1.1.sbdp.4.2', 95, 3, 1, 12),
-('-', 1, '1.1.1.mat.3.1', 90, 4, 1, 11),
-('-', 1, '1.1.1.mat.4.1', 89, 3, 1, 11),
-('-', 1, '1.1.1.sbdp.3.1', 86, 4, 1, 12),
-('-', 1, '1.1.1.sbdp.4.2', 87, 3, 1, 12),
-('00', 1, '1.1.1.mat.3.2', 80, 4, 1, 11),
-('00', 1, '1.1.1.mat.4.1', 90, 3, 1, 11),
-('--', 1, '1.1.1.mat.3.1', 85, 4, 1, 11),
-('--', 1, '1.1.1.mat.4.1', 89, 3, 1, 11),
-('--', 1, '1.1.1.ppkn.4.2', 85, 3, 1, 9),
-('--', 1, '1.1.1.ppkn.3.2', 80, 4, 1, 9);
+('2985', 1, '1.1.1.mat.3.1', 82, 3, 1, 11),
+('2985', 1, '1.1.1.mat.4.1', 80, 4, 1, 11),
+('2985', 1, '1.1.1.sbdp.3.1', 92, 3, 1, 12),
+('2985', 1, '1.1.1.sbdp.4.2', 95, 4, 1, 12),
+('2960', 1, '1.1.1.mat.3.1', 90, 3, 1, 11),
+('2960', 1, '1.1.1.mat.4.1', 89, 4, 1, 11),
+('2960', 1, '1.1.1.sbdp.3.1', 86, 3, 1, 12),
+('2960', 1, '1.1.1.sbdp.4.2', 87, 4, 1, 12),
+('2961', 1, '1.1.1.mat.3.2', 80, 3, 1, 11),
+('2961', 1, '1.1.1.mat.4.1', 90, 4, 1, 11),
+('2963', 1, '1.1.1.mat.3.1', 85, 3, 1, 11),
+('2963', 1, '1.1.1.mat.4.1', 89, 4, 1, 11),
+('2963', 1, '1.1.1.ppkn.4.2', 85, 4, 1, 9),
+('2963', 1, '1.1.1.ppkn.3.2', 80, 3, 1, 9),
+('2985', 2, '1.1.1.mat.3.1', 100, 3, 1, 11),
+('2985', 2, '1.1.1.mat.4.1', 65, 4, 1, 11);
 
 -- --------------------------------------------------------
 
@@ -388,12 +390,12 @@ CREATE TABLE `prestasi` (
 --
 
 INSERT INTO `prestasi` (`nis`, `prestasii`, `detail`) VALUES
-('', '', 'main '),
-('-', '', 'main di gor'),
-('2555', '', 'asd'),
-('0-', '', 'asd'),
-('--', 'sa', 'sadsd'),
-('2555', 'asassaas', 'qwert');
+('2858', '', 'main '),
+('2960', '', 'main di gor'),
+('2985', '', 'asd'),
+('2962', '', 'asd'),
+('2963', 'sa', 'sadsd'),
+('2985', 'asassaas', 'qwert');
 
 -- --------------------------------------------------------
 
@@ -412,7 +414,7 @@ CREATE TABLE `saran` (
 --
 
 INSERT INTO `saran` (`nis`, `saran`, `smstr`) VALUES
-('2555', 'sadf', 1),
+('2985', 'sadf', 1),
 ('2904', 'kamu itu harus belajar lebih giat ya naaaaak', 2);
 
 -- --------------------------------------------------------
@@ -452,9 +454,9 @@ CREATE TABLE `sikap` (
 --
 
 INSERT INTO `sikap` (`nis`, `kategori`, `nilai`, `smstr`) VALUES
-('0', 'Spritual', 'ketatan dalam beribadah,berperilaku syukur,toleransi dalam beribadah', 1),
-('2555', 'Spritual', 'berdoa sebelum dan sesudah melakukan kegiatan,', 1),
-('2555', 'Sosial', 'jujur,disiplin,', 1);
+('2959', 'Spritual', 'ketatan dalam beribadah,berperilaku syukur,toleransi dalam beribadah', 1),
+('2985', 'Spritual', 'berdoa sebelum dan sesudah melakukan kegiatan,', 1),
+('2985', 'Sosial', 'jujur,disiplin,', 1);
 
 -- --------------------------------------------------------
 
@@ -482,21 +484,6 @@ CREATE TABLE `siswa` (
 --
 
 INSERT INTO `siswa` (`nis`, `kelas`, `nisn`, `nama_siswa`, `tempat_lahir`, `tgl_lahir`, `jenkel`, `agama`, `ayah`, `ibu`, `alamat`, `foto`) VALUES
-('', 5, '', 'Saefil Ula', 'JEMBER', '21/10/2007', 'wanita', 'Islam', 'KUSNOTO', 'ASTUTIK', 'DSN SUMBER KOKAP', ''),
-('-', 1, '0118323373', 'ANDRE FIRMANSYAH', 'JEMBER', '12/01/2011', 'pria', 'ISLAM', 'HERMAN', 'ICE SUSILOWATI', 'Pandian', ''),
-('--', 1, '0118323373', 'CITRA VIONA ALEXSANDIA', 'JEMBER', '11/01/2012', 'wanita', 'ISLAM', 'SUMADI', 'IDA', 'Patemon', ''),
-('0', 1, '0', 'AHMAD NUR MUTAKIN', 'JEMBER', '17/12/2011', 'pria', 'islam', 'TOYO', 'TOYANI', 'DUSUN SUMBER KOKAP', ''),
-('0-', 1, '0', 'ARI RISKI', 'JEMBER', '15/06/2011', 'pria', 'ISLAM', 'PORWANTO', 'RISKA HASANAH', 'DUSUN SUMBER KOKAP', ''),
-('00', 1, '0112949056', 'ANUGRAH', 'JEMBER', '14/08/2011', 'pria', 'ISLAM', 'A.YANTO', 'SAMSIYEH', 'Jalan cendrawasih', ''),
-('000000', 1, '0116953324', 'IBNU SABIL ANDI RAGA WAHYUDI', 'JEMBER', '18/11/2011', 'pria', 'ISLAM', 'ISWAHYUDI', 'SITI MAIMUNA', 'Cendrawasih', ''),
-('1111111', 1, '0116991269', 'FARIDA FARAH SAKINAH', 'JEMBER', '21/09/2011', 'wanita', 'ISLAM', 'NURHASIN', 'ISEH', 'Jalan patemon', ''),
-('122222', 1, '0115689875', 'MUMTAZAH AFKARINA', 'JEMBER', '14/08/2011', 'wanita', 'ISLAM', 'SAMSUL ARIFIN', 'MUAWANAH', 'Cendrawasih', ''),
-('13333', 1, '14444', 'QOYYAD MAHLUFI', 'JEMBER', '20/10/2011', 'pria', 'ISLAM', 'MUALLIM', 'ROSIDEH', 'DUSUN SUMBER KOKAP', ''),
-('222222', 1, '0119926553', 'M.RIFKI ZAINUL ILMI', 'JEMBER', '', 'pria', 'ISLAM', 'SUGIANTO', 'HELMIYAH', 'Patemon', ''),
-('2222222', 1, '0111199651', 'MIFTAHUL ANWAR', 'JEMBER', '27/03/2011', 'pria', 'ISLAM', 'ABDUL KADIR', 'AZIZAH', 'Cendrawasih', ''),
-('2333333', 1, '0117073030', 'MUHAMMAD WILDANIL QUSYAIRI', 'JEMBER', '15/09/2011', 'pria', 'ISLAM', 'SUSIYANTO', 'RIFATUL MUZEYYENAH', 'Jalan janggleng', ''),
-('24444', 1, '0115536110', 'RAFA ALFARIZY', 'JEMBER', '07/11/2011', 'pria', 'ISLAM', 'SAIFUL BAHRI', 'SUYINAH', 'Patemon', ''),
-('2555', 1, '45555', 'SEPTIAN PUTRA RAMADANI', 'JEMBER', '04/09/2011', 'pria', 'ISLAM', 'SISRO', 'LUTVIAH AYU SAFITRI', 'DUSUN SUMBER KOKAP', ''),
 ('2742', 6, '005425635', 'M. Farhan Maulana', 'Jember', '09/04/2005', 'pria', 'Islam', 'Moch. Ali', 'Asyiah', 'Patemon', ''),
 ('2773', 6, '005213706', 'Dwi Abelia Rahmayanti', 'Jember', '20/11/2005', 'wanita', 'Islam', 'Sugianto', 'Hol Fadilah', 'Patemon', ''),
 ('2778', 6, '005516840', 'Hendri Saputra', 'Jember', '17/05/2005', 'pria', 'Islam', 'H. Nafis', 'Ruswa', 'Sumberkokap', ''),
@@ -504,6 +491,7 @@ INSERT INTO `siswa` (`nis`, `kelas`, `nisn`, `nama_siswa`, `tempat_lahir`, `tgl_
 ('2788', 6, '006285038', 'Moh. Rizet Zaenuri', 'Jember', '30/06/2005', 'pria', 'Islam', 'Priadi', 'Siti Aminah', 'Jenggleng', ''),
 ('2789', 6, '006467590', 'Maulidah Mukarromah', 'Jember', '02/02/2006', 'wanita', 'Islam', 'Semhadi', 'Misyana', 'Patemon', ''),
 ('2796', 6, '005976240', 'Muhammad Irfan Efendi', 'Jember', '03/07/2005', 'pria', 'Islam', 'Muhammad Taufiq', 'Sundari', 'Sumberkokap', ''),
+('2806', 6, '0068709181', 'Adib Putra Ma`arif', 'Jember', '11/05/2006', 'pria', 'ISLAM', 'SUCIPNO', 'LIPTIYAH', 'PATEMON', ''),
 ('2807', 6, '006825641', 'Dila Fitriani', 'Jember', '15/11/2005', 'wanita', 'Islam', 'Warsito', 'Suryati', 'Sumberkokap', ''),
 ('2808', 6, '007642899', 'Dini Silfiatul Izzah', 'Jember', '18/04/2007', 'wanita', 'Islam', 'Hosnan', 'Helmi Rukmana', 'Sumber Tengah', ''),
 ('2809', 6, '006257513', 'Ebim Faqihuddin', 'Jember', '30/05/2006', 'pria', 'Islam', 'taki', 'Amina', 'Pandian', ''),
@@ -511,6 +499,7 @@ INSERT INTO `siswa` (`nis`, `kelas`, `nisn`, `nama_siswa`, `tempat_lahir`, `tgl_
 ('2811', 6, '006964780', 'Lailatul Magfiroh', 'Jember', '03/10/2006', 'wanita', 'Islam', 'Amsari', 'Husnaida', 'Mumbul', ''),
 ('2812', 6, '006407928', 'Mardiyah', 'Jember', '21/02/2006', 'wanita', 'Islam', 'Tori', 'Juhria', 'Patemon', ''),
 ('2813', 6, '007406198', 'Moch. Abdul Wafi', 'Jember', '07/07/2007', 'pria', 'Islam', 'Eri', 'Suriya', 'Jenggleng', ''),
+('2814', 6, '0073258351', 'NURUL MA`ARIF', 'Jember', '27/04/2007', 'pria', 'ISLAM', 'M NASIK KARIMULLAH ABIY', 'SITI KHOFIFAH', 'DUSUN SUMBER TENGAH', ''),
 ('2815', 6, '007737090', 'Moch. Rizal Fiqri', 'Jember', '27/05/2007', 'pria', 'Islam', 'Satun ', 'Sarifah', 'Jenggleng', ''),
 ('2817', 6, '006875054', 'Muhammad Latiful Hoir', 'Jember', '06/08/2006', 'pria', 'Islam', 'Samsuri', 'Purwati', 'Sumber Tengah', ''),
 ('2818', 6, '006157908', 'Muhammad Ridho Khoiril Anwar', 'Jember', '09/08/2006', 'pria', 'Islam', 'Suheri', 'Wartin', 'Sumber Tengah', ''),
@@ -519,9 +508,11 @@ INSERT INTO `siswa` (`nis`, `kelas`, `nisn`, `nama_siswa`, `tempat_lahir`, `tgl_
 ('2821', 6, '006231640', 'Putri Renaftul Avitzah', 'Jember', '20/07/2006', 'wanita', 'Islam', 'Tohari', 'Riwani', 'Sumberkokap', ''),
 ('2822', 6, '006843287', 'Reva Vindita', 'Jember', '17/07/2006', 'wanita', 'Islam', 'Budiono', 'Shafin', 'Sumber Tengah', ''),
 ('2823', 6, '006841917', 'Rifki Ainul Huda', 'Jember', '06/07/2006', 'pria', 'Islam', 'Satun', 'Imamah', 'Sumber Tengah', ''),
+('2824', 6, '0075536915', 'Risma Wasi`ah', 'Jember', '11/02/2007', 'wanita', 'ISLAM', 'SUMADI', 'IDA', 'DUSUN PATEMON', ''),
 ('2825', 6, '006800312', 'Rohisatul Jannah', 'Jember', '25/08/2006', 'wanita', 'Islam', 'Edi Susanto', 'Eva Septa Rahayu', 'Sumberkokap', ''),
 ('2826', 6, '007935521', 'Safira Fitria Ramadina', 'Jember', '31/01/2007', 'wanita', 'Islam', 'Sugianto', 'Siti Juhiriyah', 'Sumber Tengah', ''),
 ('2827', 6, '006923547', 'Safril Triyan Saputra', 'Jember', '15/10/2006', 'pria', 'Islam', 'Sanimo', 'Tatik Habibah', 'Sumber Tengah', ''),
+('2828', 6, '0057100019', 'Sela Ma`rifah', 'Jember', '20/04/2005', 'wanita', 'ISLAM', 'SARIP', 'ELLIP', 'DUSUN PANDIAN', ''),
 ('2829', 6, '007771043', 'Siti Magfirah', 'Jember', '03/06/2007', 'wanita', 'Islam', 'Siswanto', 'Rohalima', 'Mumbul', ''),
 ('2830', 6, '007117086', 'Siti Musrifatul Hasanah', 'Jember', '20/02/2007', 'wanita', 'Islam', 'Suliyanto', 'Umsilah', 'Pandian', ''),
 ('2831', 6, '006571932', 'Siti Tita Raisi', 'Jember', '01/07/2006', 'wanita', 'Islam', 'Rep', 'Sri Hatinah', 'Sumberkokap', ''),
@@ -543,12 +534,14 @@ INSERT INTO `siswa` (`nis`, `kelas`, `nisn`, `nama_siswa`, `tempat_lahir`, `tgl_
 ('2848', 5, '0071140166', 'Moch Balan Sultoni', 'JEMBER', '01-02-2007', 'pria', 'Islam', 'BUANG SUGIONO', 'SRI SOFIATI', 'DSN SBR KOKAP', ''),
 ('2849', 5, '0077295352', 'Moch Feri', 'JEMBER', '22-06-2007', 'pria', 'Islam', 'HARTONO', 'SUMARNI', 'DSN PATEMON', ''),
 ('2850', 5, '0076188815', 'Moch.royhan Firdaus', 'JEMBER', '10-04-2007', 'pria', 'Islam', 'SUBAIDI', 'SUDARSE', 'SBR KOKAP', ''),
+('2851', 5, '0072949713', 'Mochammad Choiril Amir', 'Jember', '21/10/2007', 'pria', 'ISLAM', 'SUK`UDI (ALM)', 'MISTINA', 'SUMBER TENGAH', ''),
 ('2852', 5, '0077068591', 'Moh Ragil Firmansyah', 'JEMBER', '03-09-2007', 'pria', 'Islam', 'PRIADI', 'SITI AMINAH', 'JANGGLENG', ''),
 ('2853', 5, '0075804789', 'Muhammad Rendi Firmansyah', 'JEMBER', '15/09/2007', 'pria', 'Islam', 'SUNAELI', 'NURHANI', 'SBR TENGAH', ''),
 ('2854', 5, '0074126645', 'Muhammad Subhan', 'JEMBER', '17/02/2007', 'pria', 'Islam', 'MOH HALILI', 'MISYANI', 'DSN SUMBER TENGAH', ''),
 ('2855', 4, '008544899', 'Nabil Maulana', 'Jember', '19/07/2008', 'pria', 'Islam', 'Moch. Haris', 'Nur Halimah', 'Pandian', ''),
 ('2856', 5, '0082870843', 'Nur Aini Desi Kamilah', 'JEMBER', '05/01/2008', 'wanita', 'Islam', 'SUWITO', 'SURAKMI', 'SBR KOKAP', ''),
 ('2857', 5, '0073469228', 'Rani Wardatul Auliya', 'JEMBER', '03/10/2007', 'wanita', 'Islam', 'MURSIT', 'KIPTIYAH', 'DSN PATEMON', ''),
+('2858', 5, '0078319252', 'Saefil Ula', 'JEMBER', '21/10/2007', 'wanita', 'ISLAM', 'KUSNOTO', 'ASTUTIK', 'DSN SUMBER KOKAP', ''),
 ('2859', 5, '0075862019', 'Siti Aisyah', 'JEMBER', '21/08/2007', 'wanita', 'Islam', 'ASYARI', 'SITI HATIMAH', 'DSN SUMBER TENGAH', ''),
 ('2860', 5, '0088153721', 'Siti Himayah', 'JEMBER', '15/01/2008', 'wanita', 'Islam', 'MUZAKKI', 'TATIK', 'DUSUN MUMBUL', ''),
 ('2861', 5, '0083454912', 'Siti Raudatul Jannah', 'JEMBER', '22/01/2008', 'wanita', 'Islam', 'HOSNAN', 'LAILATUL BADRIAH', 'DSN SUMBER TENGAH', ''),
@@ -604,6 +597,7 @@ INSERT INTO `siswa` (`nis`, `kelas`, `nisn`, `nama_siswa`, `tempat_lahir`, `tgl_
 ('2918', 3, '0091955253', 'Moch Fahrudin Ghazali', 'JEMBER', '20-03-2009', 'pria', 'Islam', 'MOH ALI', 'ASIYA', 'PATEMON', ''),
 ('2919', 3, '0093341340', 'Moch Ilman Huda', 'JEMBER', '28-07-2009', 'pria', 'Islam', 'HOIRULLAH', 'SITI AFIYAH', 'PATEMON', ''),
 ('2920', 3, '0105981742', 'Moch Sahrul Gunawan', 'JEMBER', '13-04-2010', 'pria', 'Islam', 'KARYAWAN', 'MISNAINI', 'Jl.Cendrawasih', ''),
+('2921', 3, '0094553719', 'Moh Iqbal', 'Jember', '18/11/2009', 'pria', 'ISLAM', 'MOH.HASIM AS`ARI', 'SITI WAHYUNI', 'Jl.Cendrwasih', ''),
 ('2922', 3, '0091283809', 'Muh Ifan Nurul Hidayah', 'JEMBER', '18-02-2009', 'pria', 'Islam', 'MOH TAUFIQ HIDAYAT', 'SITI RAHMAWATI', 'Jl.Cendrawasih', ''),
 ('2923', 3, '0091452430', 'Muhammad Ilzamul Haqqi', 'JEMBER', '23-11-2009', 'pria', 'Islam', 'MUHAMMAD ZAINI ARIFIN', 'ILHAMIYAH', 'mumbul', ''),
 ('2924', 3, '0095698360', 'Muhammad Wildan Alhak', 'JEMBER', '22-05-2009', 'pria', 'Islam', 'TURYADI', 'ELY ATI', 'Jl.Cendrawasih', ''),
@@ -639,18 +633,35 @@ INSERT INTO `siswa` (`nis`, `kelas`, `nisn`, `nama_siswa`, `tempat_lahir`, `tgl_
 ('2955', 2, '0116586868', 'Safiroh Saniatus .s', 'JEMBER', '12/05/2011', 'wanita', 'Islam', 'Sugiarto', 'Ucik sriwahyuni', 'JL.CENDRAWASIH', ''),
 ('2956', 2, '0107583033', 'Shofia Jufinka Hendra Yanti', 'JEMBER', '10/06/2010', 'wanita', 'Islam', 'HENDRA', 'MURNI', 'JL.CENDRAWASIH', ''),
 ('2957', 2, '0109922074', 'Uswatun Maryana', 'JEMBER', '20/03/2010', 'wanita', 'Islam', 'SAHRI', 'JATIMA', 'JL.CENDRAWASIH', ''),
-('311111', 1, '411111', 'REZA REVANDO AKBAR', 'JEMBER', '05/11/2011', 'pria', 'ISLAM', 'ANANG SUGIONO', 'SRI ANI', 'perum bukit binus jaya', ''),
-('322222', 1, '32222', 'ROHIT ADI SAPUTRA', 'JEMBER', '12/02/2012', 'pria', 'ISLAM', 'YULIANTORO', 'ANITA', 'DUSUN SUMBER KOKAP', ''),
-('33333333', 1, '0114735691', 'ILMIAH', 'JEMBER', '', 'wanita', 'ISLAM', 'TOMAS', 'SITI HOLIFAH', 'Jalan mumbul', ''),
-('33444444', 1, '4444444', 'JULIO AZZAM ALFARISI', 'JEMBER', '04/07/2011', 'pria', 'ISLAM', 'RINTO ANTO', 'ENDAH TRI PURNAWATI', 'DUSUN SUMBER KOKAP', ''),
-('4111111', 1, '0127817826', 'SAHFA ANISATUL MILLAH', 'JEMBER', '17/01/2012', 'wanita', 'ISLAM', 'AGUS SUBAERI', 'NUR SYAMSIAH', 'Jalan cendrawasih', ''),
-('4444', 1, '0115781864', 'MUHAMMAD FENGKI FERTANDO', 'JEMBER', '09/05/2011', 'pria', 'ISLAM', 'SUWARNO', 'NIWATI', 'Jalan sukosari', ''),
-('4555555', 1, '0115883693', 'MUHAMMAD SYAIROSI ANNAZILI', 'JEMBER', '01/06/2011', 'pria', 'ISLAM', 'AGUS SLAMETO', 'RISKA HERLINA', 'Cendrawasih', ''),
-('5111111', 1, '0115223649', 'SAMSUL HADI', 'JEMBER', '16/12/2011', 'pria', 'ISLAM', 'FATHORROSI', 'YULIATIN', 'Pandian', ''),
-('66666', 1, '0124306638', 'MUHAMMAD IKHWAN EFENDY', 'JEMBER', '27/10/2012', 'pria', 'ISLAM', 'ABDUL MUKIB', 'SUMIYATI', 'Jalan patemon', ''),
-('71111111', 1, '0113975609', 'ULFA MASRUROH', 'JEMBER', '03/08/2011', 'wanita', 'ISLAM', 'JOKO SULASMAN', 'AISIYAH', 'Cendrawasih', ''),
-('7777', 1, '0117096932', 'MUHAMMAD NAUVAL ALFIAN', 'JEMBER', '11/11/2011', 'pria', 'ISLAM', 'MISBAHUL HASAN', 'FATHATUS SHOLEHAH', 'Dusun sumber tengah', ''),
-('8888888', 1, '0114477641', 'KURNIAWAN FADILATU RAHMAD', 'JEMBER', '10/11/2011', 'pria', 'ISLAM', 'SAIFUL', 'SITI ROMLAH', 'Cendrawasih', '');
+('2958', 5, '0078319252', 'RIRIS MAULIDA', 'Jember', '18/04/2007', 'pria', 'ISLAM', 'MISNAJI', 'JUMA`ATI', 'SUMBER GEBANG LANGKAP', ''),
+('2959', 1, '0118755588', 'AHMAD NUR MUTAKIN', 'JEMBER', '17/12/2011', 'pria', 'islam', 'TOYO', 'TOYANI', 'DUSUN SUMBER KOKAP', ''),
+('2960', 1, '0118323373', 'ANDRE FIRMANSYAH', 'JEMBER', '12/01/2011', 'pria', 'ISLAM', 'HERMAN', 'ICE SUSILOWATI', 'Pandian', ''),
+('2961', 1, '0112949056', 'ANUGRAH', 'JEMBER', '14/08/2011', 'pria', 'ISLAM', 'A.YANTO', 'SAMSIYEH', 'Jalan cendrawasih', ''),
+('2962', 1, '0115075800', 'ARI RISKI ', 'JEMBER', '15/06/2011', 'pria', 'ISLAM', 'PORWANTO', 'RISKA HASANAH', 'DUSUN SUMBER KOKAP', ''),
+('2963', 1, '0118323373', 'CITRA VIONA ALEXSANDIA', 'JEMBER', '11/01/2012', 'wanita', 'ISLAM', 'SUMADI', 'IDA', 'Patemon', ''),
+('2964', 1, '0116092737', 'DARISAH ISMA`ILLIAH', 'Jember', '14/08/2011', 'wanita', 'Islam', 'ISMA`IL', 'SITI MUTMAINAH', 'Jalan barat gudang', ''),
+('2965', 1, '0116991269', 'FARIDA FARAH SAKINAH', 'JEMBER', '21/09/2011', 'wanita', 'ISLAM', 'NURHASIN', 'ISEH', 'Jalan patemon', ''),
+('2966', 1, '0116953324', 'IBNU SABIL ANDI RAGA WAHYUDI', 'JEMBER', '18/11/2011', 'pria', 'ISLAM', 'ISWAHYUDI', 'SITI MAIMUNA', 'Cendrawasih', ''),
+('2967', 1, '0114735691', 'ILMIAH', 'JEMBER', '', 'wanita', 'ISLAM', 'TOMAS', 'SITI HOLIFAH', 'Jalan mumbul', ''),
+('2968', 1, '0119040581', 'JULIO AZZAM ALFARISI', 'JEMBER', '04/07/2011', 'pria', 'ISLAM', 'RINTO ANTO', 'ENDAH TRI PURNAWATI', 'DUSUN SUMBER KOKAP', ''),
+('2969', 1, '0114477641', 'KURNIAWAN FADILATU RAHMAD', 'Jember', '10/11/2011', 'pria', 'ISLAM', 'SAIFUL', 'SITI ROMLAH', 'Cendrawasih', ''),
+('2970', 1, '0119926553', 'M.RIFKI ZAINUL ILMI', 'JEMBER', '24/11/2011', 'pria', 'ISLAM', 'SUGIANTO', 'HELMIYAH', 'Patemon', ''),
+('2971', 1, '0111199651', 'MIFTAHUL ANWAR', 'JEMBER', '27/03/2011', 'pria', 'ISLAM', 'ABDUL KADIR', 'AZIZAH', 'Cendrawasih', ''),
+('2972', 1, '0115781864', 'MUHAMMAD FENGKI FERTANDO', 'JEMBER', '09/05/2011', 'pria', 'ISLAM', 'SUWARNO', 'NIWATI', 'Jalan sukosari', ''),
+('2973', 1, '0111581952', 'MUHAMMAD IHSAN AL-FATONI', 'Jember', '24/10/2011', 'pria', 'Islam', 'ABD. RACHMAN SHOLEH', 'HAMIDATUS SA`DIYAH', 'Jalan cendrawasih', ''),
+('2974', 1, '0124306638', 'MUHAMMAD IKHWAN EFENDY', 'JEMBER', '27/10/2012', 'pria', 'ISLAM', 'ABDUL MUKIB', 'SUMIYATI', 'Jalan patemon', ''),
+('2975', 1, '0117096932', 'MUHAMMAD NAUVAL ALFIAN', 'JEMBER', '11/11/2011', 'pria', 'ISLAM', 'MISBAHUL HASAN', 'FATHATUS SHOLEHAH', 'Dusun sumber tengah', ''),
+('2976', 1, '0115883693', 'MUHAMMAD SYAIROSI ANNAZILI', 'JEMBER', '01/06/2011', 'pria', 'ISLAM', 'AGUS SLAMETO', 'RISKA HERLINA', 'Cendrawasih', ''),
+('2977', 1, '0117073030', 'MUHAMMAD WILDANIL QUSYAIRI', 'JEMBER', '15/09/2011', 'pria', 'ISLAM', 'SUSIYANTO', 'RIFATUL MUZEYYENAH', 'Jalan janggleng', ''),
+('2978', 1, '0115689875', 'MUMTAZAH AFKARINA', 'JEMBER', '14/08/2011', 'wanita', 'ISLAM', 'SAMSUL ARIFIN', 'MUAWANAH', 'Cendrawasih', ''),
+('2979', 1, '0112080958', 'QOYYAD MAHLUFI', 'JEMBER', '20/10/2011', 'pria', 'ISLAM', 'MUALLIM', 'ROSIDEH', 'DUSUN SUMBER KOKAP', ''),
+('2980', 1, '0115536110', 'RAFA ALFARIZY', 'Jember', '07/11/2011', 'pria', 'Islam', 'SAIFUL BAHRI', 'SUYINAH', 'Patemon', ''),
+('2981', 1, '0114628827', 'REZA REVANDO AKBAR', 'Jember', '05/11/2011', 'pria', 'ISLAM', 'ANANG SUGIONO', 'SRI ANI', 'perum bukit binus jaya', ''),
+('2982', 1, '0117768776', 'ROHIT ADI SAPUTRA', 'JEMBER', '12/02/2012', 'pria', 'ISLAM', 'YULIANTORO', 'ANITA', 'DUSUN SUMBER KOKAP', ''),
+('2983', 1, '0127817826', 'SAHFA ANISATUL MILLAH', 'Jember', '17/01/2012', 'wanita', 'ISLAM', 'AGUS SUBAERI', 'NUR SYAMSIAH', 'Jalan cendrawasih', ''),
+('2984', 1, '0115223649', 'SAMSUL HADI', 'JEMBER', '16/12/2011', 'pria', 'Islam', 'FATHORROSI', 'YULIATIN', 'Pandian', ''),
+('2985', 1, '0115352803', 'SEPTIAN PUTRA RAMADANI', 'JEMBER', '04/09/2011', 'pria', 'ISLAM', 'SISRO', 'LUTVIAH AYU SAFITRI', 'DUSUN SUMBER KOKAP', ''),
+('2986', 1, '0113975609', 'ULFA MASRUROH', 'JEMBER', '03/08/2011', 'wanita', 'ISLAM', 'JOKO SULASMAN', 'AISIYAH', 'Cendrawasih', '');
 
 -- --------------------------------------------------------
 
@@ -880,7 +891,7 @@ ALTER TABLE `kelas`
 -- AUTO_INCREMENT for table `login`
 --
 ALTER TABLE `login`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `mapel`
 --
