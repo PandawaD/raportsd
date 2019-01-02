@@ -22,7 +22,7 @@
                 <div class="row">
                     <?php 
                         if(isset($_GET['halaman'])){
-                            include 'halaman/form/tahun/tahun.php';
+                            
                         if($_GET['halaman']=='siswa') {
                             include 'halaman/form/siswa/siswa.php';
                         }else if($_GET['halaman']=='edit_data_siswa') {

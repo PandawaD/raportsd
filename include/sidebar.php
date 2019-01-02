@@ -33,6 +33,7 @@
             <li class="active"><a href="?halaman=kopetensi"><i class="fa fa-circle-o"></i> Data KD</a></li>
             <li class="active"><a href="?halaman=subtema"><i class="fa fa-circle-o"></i> Sub-Tema</a></li>
             <li class="active"><a href="?halaman=deskripsi"><i class="fa fa-circle-o"></i> Deskripsi</a></li>
+            <li class="active"><a href="?halaman=tahun"><i class="fa fa-circle-o"></i> Tahun Ajaran</a></li>
           </ul>
           <?php } ?>
         </li>
