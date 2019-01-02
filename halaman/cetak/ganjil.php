@@ -43,13 +43,21 @@ ob_start();
       <td width="35%"><?php echo ("SDN Randuagung 01"); ?></td>
       <td width="10%">Tahun Pelajaran </td>
       <td width="1%">:</td>
-      <td width="10%"><?php date_default_timezone_set("Asia/Jakarta"); echo date('Y'); ?> - <?php date_default_timezone_set("Asia/Jakarta"); echo date('Y')+1; ?> </td>
+        <?php 
+                    
+          $query = mysqli_query($koneksi,"SELECT * FROM tahun") or die(mysqli_error());
+          while ($data = mysqli_fetch_array($query)) {  
+        ?>
+      <td width="10%">
+          <?php echo $data['awal']; ?>/<?php echo $data['akhir']; ?>
+      </td>
+      <?php } ?>
     </tr>
 
     <tr>
       <td width="20%">Alamat Sekolah</td>
       <td width="1%">:</td>
-      <td width="35%"><?php echo ("JL. Raya Cendrawasih NO. 121"); ?></td>
+      <td width="35%"><?php echo ("JL. Cendrawasih NO. 121"); ?></td>
   <?php } ?>
     </tr>
   </table> 
